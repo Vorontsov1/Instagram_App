@@ -15,7 +15,7 @@ const App = () => {
         backgroundColor: '#a4f84f',
       }}>
       <Text style={{color: colors.primary, fontSize: font.size.xxlg}}>
-        Hello World
+        Hello
         <Entypo name="instagram" size={30} color="red" />
       </Text>
     </View>
