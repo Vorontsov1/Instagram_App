@@ -14,7 +14,7 @@ const App = () => {
         <Image
           style={styles.avatar}
           src={
-            'https://images.pexels.com/photos/1758845/pexels-photo-1758845.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+            'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
           }
         />
         <Text style={styles.name}>Laura Palmer</Text>
@@ -29,7 +29,7 @@ const App = () => {
       <Image
         style={styles.image}
         src={
-          'https://images.pexels.com/photos/821742/pexels-photo-821742.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+          'https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
         }
       />
       {/* Footer */}
