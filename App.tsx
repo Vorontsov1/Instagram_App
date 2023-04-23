@@ -61,16 +61,29 @@ const App = () => {
           />
         </View>
         {/* Likes */}
-        <Text>
-          Like by <Text style={{fontWeight: font.weight.bold}}>username </Text>
-          and
-          <Text style={{fontWeight: font.weight.bold}}> 77 others</Text>
+        <Text style={styles.text}>
+          Like by
+          <Text style={styles.bold}>username </Text>and
+          <Text style={styles.bold}> 77 others</Text>
         </Text>
         {/* Post description */}
-        <Text>
-          <Text>laurapalmer {' '}</Text>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi totam doloribus ducimus, tempora placeat deserunt odit eum. Vitae ducimus in ullam.
+        <Text style={styles.text}>
+          <Text style={styles.bold}>laurapalmer </Text>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi totam
+          doloribus ducimus, tempora placeat deserunt odit eum. Vitae ducimus in
+          ullam.
         </Text>
+        {/* Comments */}
+        <Text style={{color: colors.grey}}>View all 17 comments</Text>
+        <View style={styles.comment}>
+          <Text style={styles.commentText}>
+            <Text style={styles.bold}>laurapalmer </Text>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          </Text>
+          <AntDesign name={'hearto'} style={styles.icon} color={colors.black} />
+        </View>
+        {/* Posted by  */}
+        <Text style={{color: colors.grey}}>19 December, 2021</Text>
       </View>
     </View>
   );
@@ -110,6 +123,22 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginHorizontal: 5,
+  },
+  text: {
+    color: colors.black,
+    lineHeight: 18,
+  },
+  bold: {
+    fontWeight: font.weight.bold,
+  },
+  commentText: {
+    color: colors.black,
+    flex: 1,
+    lineHeight: 18,
+  },
+  comment: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 
