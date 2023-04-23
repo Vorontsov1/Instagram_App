@@ -8,9 +8,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 import Comment from '../Comment';
 
+interface IFeedPost {
+    post: IPost;
+}
 
-
-const FeedPost = ({post}) => {
+const FeedPost = ({post}: IFeedPost) => {
+   
   return (
     <View style={styles.post}>
       {/* Header */}
