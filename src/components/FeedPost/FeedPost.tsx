@@ -8,6 +8,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 import Comment from '../Comment';
+import DoublePressable from '../DoublePressable';
 
 interface IFeedPost {
   post: IPost;
@@ -23,15 +24,6 @@ const FeedPost = ({post}: IFeedPost) => {
     setIsliked(v => !v);
   };
 
-  let lastTap = 0;
-  const handleDoublePress = () => {
-    const now = new Date().getTime();
-    if (now - lastTap < 300) {
-      //double tap
-      toggleLiked();
-    }
-    lastTap = now;
-  }
   
 
   return (
@@ -48,9 +40,9 @@ const FeedPost = ({post}: IFeedPost) => {
         />
       </View>
       {/* Content */}
-      <Pressable onPress={handleDoublePress}>
+      <DoublePressable onDoublePress={toggleLiked}>
         <Image style={styles.image} source={{ uri: post.image }} />
-        </Pressable>
+        </DoublePressable>
       {/* Footer */}
       <View style={styles.footer}>
         <View style={styles.iconContainer}>
