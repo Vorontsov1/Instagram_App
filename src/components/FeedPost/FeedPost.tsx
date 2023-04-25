@@ -19,9 +19,20 @@ const FeedPost = ({post}: IFeedPost) => {
     setIsDescriptionExpanded(v => !v); //make it to true
   };
   const [isliked, setIsliked] = useState(false);
-  const toggleLiked = () => { 
+  const toggleLiked = () => {
     setIsliked(v => !v);
+  };
+
+  let lastTap = 0;
+  const handleDoublePress = () => {
+    const now = new Date().getTime();
+    if (now - lastTap < 300) {
+      //double tap
+      toggleLiked();
+    }
+    lastTap = now;
   }
+  
 
   return (
     <View style={styles.post}>
@@ -37,7 +48,9 @@ const FeedPost = ({post}: IFeedPost) => {
         />
       </View>
       {/* Content */}
-      <Image style={styles.image} source={{uri: post.image}} />
+      <Pressable onPress={handleDoublePress}>
+        <Image style={styles.image} source={{ uri: post.image }} />
+        </Pressable>
       {/* Footer */}
       <View style={styles.footer}>
         <View style={styles.iconContainer}>
