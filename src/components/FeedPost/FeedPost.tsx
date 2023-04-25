@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet,Pressable, Image} from 'react-native';
 import colors from '../../theme/colors.ts';
 import font from '../../theme/fonts.ts';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -18,8 +18,10 @@ const FeedPost = ({post}: IFeedPost) => {
   const toggleDescriptionExpanded = () => {
     setIsDescriptionExpanded(v => !v); //make it to true
   };
-  const [islike, setIslike] = useState(false);
-
+  const [isliked, setIsliked] = useState(false);
+  const toggleLiked = () => { 
+    setIsliked(v => !v);
+  }
 
   return (
     <View style={styles.post}>
@@ -39,13 +41,14 @@ const FeedPost = ({post}: IFeedPost) => {
       {/* Footer */}
       <View style={styles.footer}>
         <View style={styles.iconContainer}>
-          <AntDesign
-            onPress={() => setIslike(!islike)}
-            name={islike ? 'heart' : 'hearto'}
-            size={24}
-            style={styles.icon}
-            color={islike ? 'red' : colors.black}
-          />
+          <Pressable onPress={toggleLiked}>
+            <AntDesign
+              name={isliked ? 'heart' : 'hearto'}
+              size={24}
+              style={styles.icon}
+              color={isliked ? colors.accent : colors.black}
+            />
+          </Pressable>
           <Ionicons
             name="chatbubble-outline"
             size={24}
