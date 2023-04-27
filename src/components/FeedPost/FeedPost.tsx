@@ -1,5 +1,11 @@
 import {useState, useEffect} from 'react';
-import {View, Text, StyleSheet,Pressable, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  Image,
+} from 'react-native';
 import colors from '../../theme/colors.ts';
 import font from '../../theme/fonts.ts';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -13,29 +19,29 @@ import Carousel from '../Carousel';
 
 interface IFeedPost {
   post: IPost;
+  onDoublePress?: () => void;
 }
 
-const FeedPost = ({post}: IFeedPost) => {
+const FeedPost = ({ post }: IFeedPost) => {
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const toggleDescriptionExpanded = () => {
     setIsDescriptionExpanded(v => !v); //make it to true
   };
   const [isliked, setIsliked] = useState(false);
-  const toggleLiked = () => {
+  const toggleLike = () => {
     setIsliked(v => !v);
   };
 
   let content = null;
-  if (post.image) { 
+  if (post.image) {
     content = (
-      <DoublePressable onDoublePress={toggleLiked}>
+      <DoublePressable onDoublePress={toggleLike}>
         <Image style={styles.image} source={{uri: post.image}} />
       </DoublePressable>
     );
-  } else  if (post.images){
-content = (<Carousel images={post.images} />);
+  } else if (post.images) {
+    content = <Carousel images={post.images} onDoublePress={toggleLike} />;
   }
-  
 
   return (
     <View style={styles.post}>
@@ -55,7 +61,7 @@ content = (<Carousel images={post.images} />);
       {/* Footer */}
       <View style={styles.footer}>
         <View style={styles.iconContainer}>
-          <Pressable onPress={toggleLiked}>
+          <Pressable onPress={toggleLike}>
             <AntDesign
               name={isliked ? 'heart' : 'hearto'}
               size={24}
@@ -85,27 +91,30 @@ content = (<Carousel images={post.images} />);
         {/* Likes */}
         <Text style={styles.text}>
           Like by
-          <Text style={styles.bold}>username </Text>and{' '}
-          <Text style={styles.bold}>{post.nofLikes}</Text>
+          <Text style={styles.bold}>username </Text>
+          and <Text style={styles.bold}>{post.nofLikes}</Text>
         </Text>
         {/* Post description */}
-        <Text style={styles.text} numberOfLines={isDescriptionExpanded ? 0 : 3}>
+        <Text
+          style={styles.text}
+          numberOfLines={isDescriptionExpanded ? 0 : 3}>
           <Text style={styles.bold}>{post.user.username} </Text>
-          {post.description}
-        </Text>
-        <Text onPress={toggleDescriptionExpanded} style={styles.text}>
-          {isDescriptionExpanded ? 'less' : 'more'}
-        </Text>
-        <Text style={{color: colors.grey}}>
-          View all {post.nofComments} comments
-        </Text>
-        {post.comments.map(comment => (
-          <Comment comment={comment} key={comment.id} />
-        ))}
-        <Text style={{color: colors.grey}}>{post.createdAt}</Text>
+            {post.description}
+          </Text>
+          <Text onPress={toggleDescriptionExpanded} style={styles.text}>
+            {isDescriptionExpanded ? 'less' : 'more'}
+          </Text>
+          <Text style={{ color: colors.grey }}>
+            View all {post.nofComments} comments
+          </Text>
+          {post.comments.map(comment => (
+            <Comment comment={comment} key={comment.id} />
+          ))}
+          <Text style={{ color: colors.grey }}>{post.createdAt}</Text>
+        </View>
       </View>
-    </View>
-  );
-};
+    );
+  };
+
 
 export default FeedPost;

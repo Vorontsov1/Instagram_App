@@ -7,6 +7,7 @@ import {
   useWindowDimensions,
   ScrollView,
 } from 'react-native';
+import DoublePressable from '../DoublePressable';
 import colors from '../../../src/theme/colors.ts';
 
 
@@ -16,27 +17,29 @@ interface ICarousel {
     images: string[];
 }
 
-const Carousel = ({ images }: ICarousel) => {
-  const { width } = useWindowDimensions();
+const Carousel = ({ images, onDoublePress = () => {}}: ICarousel) => {
+  const {width} = useWindowDimensions();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const viewabilityConfig = {
     itemVisiblePercentThreshold: 51,
-  }
-  
-  const onViewableItemsChanged = useRef(({ viewableItems }) => {
+  };
+
+  const onViewableItemsChanged = useRef(({viewableItems}) => {
     if (viewableItems.length > 0) {
       setActiveImageIndex(viewableItems[0].index);
     }
   });
-  
+
   return (
     <View>
       <FlatList
         data={images}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
-          <Image source={{ uri: item }} style={{ width, aspectRatio: 1 }} />
+        renderItem={({item}) => (
+          <DoublePressable onDoublePress={onDoublePress}>
+            <Image source={{uri: item}} style={{width, aspectRatio: 1}} />
+          </DoublePressable>
         )}
         horizontal
         pagingEnabled
@@ -68,6 +71,6 @@ const Carousel = ({ images }: ICarousel) => {
       </View>
     </View>
   );
-}
+};
 
 export default Carousel;
