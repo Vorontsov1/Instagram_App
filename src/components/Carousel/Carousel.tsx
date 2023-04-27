@@ -1,5 +1,12 @@
-import {useState} from 'react';
-import { View, Text, FlatList, Image, useWindowDimensions, ScrollView } from 'react-native';
+import {useState, useRef} from 'react';
+import {
+  View,
+  Text,
+  FlatList,
+  Image,
+  useWindowDimensions,
+  ScrollView,
+} from 'react-native';
 import colors from '../../../src/theme/colors.ts';
 
 
@@ -10,19 +17,31 @@ interface ICarousel {
 }
 
 const Carousel = ({ images }: ICarousel) => {
-    const { width } = useWindowDimensions();
-    const [activeImageIndex, setActiveImageIndex] = useState(1);
+  const { width } = useWindowDimensions();
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
+  const viewabilityConfig = {
+    itemVisiblePercentThreshold: 51,
+  }
+  
+  const onViewableItemsChanged = useRef(({ viewableItems }) => {
+    if (viewableItems.length > 0) {
+      setActiveImageIndex(viewableItems[0].index);
+    }
+  });
+  
   return (
     <View>
       <FlatList
         data={images}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({item}) => (
-          <Image source={{uri: item}} style={{width, aspectRatio: 1}} />
+        renderItem={({ item }) => (
+          <Image source={{ uri: item }} style={{ width, aspectRatio: 1 }} />
         )}
-        pagingEnabled
         horizontal
+        pagingEnabled
+        onViewableItemsChanged={onViewableItemsChanged.current}
+        viewabilityConfig={viewabilityConfig}
       />
       <View
         style={{
@@ -38,8 +57,8 @@ const Carousel = ({ images }: ICarousel) => {
             style={{
               width: 10,
               aspectRatio: 1,
-                backgroundColor:
-                    activeImageIndex === index  ? colors.primary : colors.white,
+              backgroundColor:
+                activeImageIndex === index ? colors.primary : colors.white,
               borderRadius: 5,
               margin: 10,
               marginHorizontal: 5,

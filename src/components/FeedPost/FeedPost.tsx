@@ -28,7 +28,9 @@ const FeedPost = ({post}: IFeedPost) => {
   let content = null;
   if (post.image) { 
     content = (
-      <Image style={styles.image} source={{ uri: post.image }} />
+      <DoublePressable onDoublePress={toggleLiked}>
+        <Image style={styles.image} source={{uri: post.image}} />
+      </DoublePressable>
     );
   } else  if (post.images){
 content = (<Carousel images={post.images} />);
@@ -49,9 +51,7 @@ content = (<Carousel images={post.images} />);
         />
       </View>
       {/* Content */}
-      <DoublePressable onDoublePress={toggleLiked}>{content}
-        
-        </DoublePressable>
+      {content}
       {/* Footer */}
       <View style={styles.footer}>
         <View style={styles.iconContainer}>
