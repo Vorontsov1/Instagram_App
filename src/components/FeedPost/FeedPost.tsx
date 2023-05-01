@@ -16,6 +16,7 @@ import styles from './styles';
 import Comment from '../Comment';
 import DoublePressable from '../DoublePressable';
 import Carousel from '../Carousel';
+import VideoPlayer from '../Videoplayer';
 
 interface IFeedPost {
   post: IPost;
@@ -41,6 +42,8 @@ const FeedPost = ({ post }: IFeedPost) => {
     );
   } else if (post.images) {
     content = <Carousel images={post.images} onDoublePress={toggleLike} />;
+  } else if (post.video){
+    content = <VideoPlayer uri={post.video}/>
   }
 
   return (

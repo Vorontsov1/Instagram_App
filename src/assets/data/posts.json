@@ -1,23 +1,54 @@
 [
   {
-    "id": "1",
+    "id": "video1",
     "createdAt": "19 December 2021",
-    "images":  [
-      "https://images.pexels.com/photos/935756/pexels-photo-935756.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "https://images.pexels.com/photos/821742/pexels-photo-821742.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "https://images.pexels.com/photos/207247/pexels-photo-207247.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-    ],
+   "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     "description": "Comedian and content creator, sharing my daily adventures and making you laugh along the way,Comedian and content creator, sharing my daily adventures and making you laugh along the way",
     "user": {
       "id": "u1",
-      "image":       "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "image": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       "username": "Robert Smith"
     },
     "nofComments": 11,
     "nofLikes": 34,
     "comments": [
-      { 
+      {
+        "id": "1",
+        "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. H,",
+        "user": {
+          "id": "u1",
+          "username": "laurapalmer"
+        }
+      },
+      {
+        "id": "2",
+        "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. H",
+        "user": {
+          "id": "u1",
+          "username": "vadimnotjustdev"
+        }
+      }
+    ]
+  },
+  {
+    "id": "1",
+    "createdAt": "19 December 2021",
+    "images": [
+      "https://images.pexels.com/photos/207247/pexels-photo-207247.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "https://images.pexels.com/photos/935756/pexels-photo-935756.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "https://images.pexels.com/photos/821742/pexels-photo-821742.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    ],
+    "description": "Comedian and content creator, sharing my daily adventures and making you laugh along the way,Comedian and content creator, sharing my daily adventures and making you laugh along the way",
+    "user": {
+      "id": "u1",
+      "image": "https://images.pexels.com/photos/1758845/pexels-photo-1758845.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "username": "Cathy Brown"
+    },
+    "nofComments": 11,
+    "nofLikes": 34,
+    "comments": [
+      {
         "id": "1",
         "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. H,",
         "user": {
@@ -73,7 +104,7 @@
     "description": "Your go-to guy for the funniest reactions, commentary, and hilarious skits, Comedian and content creator, sharing my daily adventures and making you laugh along the way",
     "user": {
       "id": "u1",
-      "image":  "https://images.pexels.com/photos/3808103/pexels-photo-3808103.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "image": "https://images.pexels.com/photos/3808103/pexels-photo-3808103.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       "username": "Bob Johnson"
     },
     "nofComments": 11,
@@ -100,7 +131,7 @@
   {
     "id": "4",
     "createdAt": "19 December 2021",
-    "image":    "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    "image": "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     "description": "Stand-up comedian and humor enthusiast, creating content that will leave you in stitches, Comedian and content creator, sharing my daily adventures and making you laugh along the way",
     "user": {
       "id": "u1",
