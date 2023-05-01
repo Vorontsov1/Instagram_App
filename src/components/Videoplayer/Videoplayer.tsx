@@ -1,12 +1,27 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
+import Video from 'react-native-video';
 
-const Videoplayer = () => {
-  return (
-    <View>
-      <Text>Videoplayer</Text>
-    </View>
-  );
+interface IVideoPlayer {
+    uri:  string;
 }
 
-export default Videoplayer;
+const VideoPlayer = ({ uri }: IVideoPlayer) => { 
+    return (
+      <Video
+        resizeMode="contain"
+        source={{uri}}
+        style={styles.video}
+      />
+    );
+}
+
+
+const styles = StyleSheet.create({
+    video: {
+        width: '100%',
+        aspectRatio: 16 / 9,
+  },
+});
+
+export default VideoPlayer;

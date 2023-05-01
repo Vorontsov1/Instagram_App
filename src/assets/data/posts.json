@@ -2,7 +2,7 @@
   {
     "id": "video1",
     "createdAt": "19 December 2021",
-   "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "video": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     "description": "Comedian and content creator, sharing my daily adventures and making you laugh along the way,Comedian and content creator, sharing my daily adventures and making you laugh along the way",
     "user": {
       "id": "u1",
