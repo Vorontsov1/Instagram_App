@@ -1,11 +1,5 @@
 import {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Pressable,
-  Image,
-} from 'react-native';
+import {View, Text, StyleSheet, Pressable, Image} from 'react-native';
 import colors from '../../theme/colors.ts';
 import font from '../../theme/fonts.ts';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -23,7 +17,7 @@ interface IFeedPost {
   onDoublePress?: () => void;
 }
 
-const FeedPost = ({ post }: IFeedPost) => {
+const FeedPost = ({post}: IFeedPost) => {
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const toggleDescriptionExpanded = () => {
     setIsDescriptionExpanded(v => !v); //make it to true
@@ -42,8 +36,12 @@ const FeedPost = ({ post }: IFeedPost) => {
     );
   } else if (post.images) {
     content = <Carousel images={post.images} onDoublePress={toggleLike} />;
-  } else if (post.video){
-    content = <VideoPlayer uri={post.video}/>
+  } else if (post.video) {
+    content = (
+      <DoublePressable onDoublePress={toggleLike}>
+        <VideoPlayer uri={post.video} />
+      </DoublePressable>
+    );
   }
 
   return (
@@ -98,26 +96,23 @@ const FeedPost = ({ post }: IFeedPost) => {
           and <Text style={styles.bold}>{post.nofLikes}</Text>
         </Text>
         {/* Post description */}
-        <Text
-          style={styles.text}
-          numberOfLines={isDescriptionExpanded ? 0 : 3}>
+        <Text style={styles.text} numberOfLines={isDescriptionExpanded ? 0 : 3}>
           <Text style={styles.bold}>{post.user.username} </Text>
-            {post.description}
-          </Text>
-          <Text onPress={toggleDescriptionExpanded} style={styles.text}>
-            {isDescriptionExpanded ? 'less' : 'more'}
-          </Text>
-          <Text style={{ color: colors.grey }}>
-            View all {post.nofComments} comments
-          </Text>
-          {post.comments.map(comment => (
-            <Comment comment={comment} key={comment.id} />
-          ))}
-          <Text style={{ color: colors.grey }}>{post.createdAt}</Text>
-        </View>
+          {post.description}
+        </Text>
+        <Text onPress={toggleDescriptionExpanded} style={styles.text}>
+          {isDescriptionExpanded ? 'less' : 'more'}
+        </Text>
+        <Text style={{color: colors.grey}}>
+          View all {post.nofComments} comments
+        </Text>
+        {post.comments.map(comment => (
+          <Comment comment={comment} key={comment.id} />
+        ))}
+        <Text style={{color: colors.grey}}>{post.createdAt}</Text>
       </View>
-    );
-  };
-
+    </View>
+  );
+};
 
 export default FeedPost;
