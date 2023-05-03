@@ -2,7 +2,6 @@ const colors = {
   primary: '#405DE6',
 
   accent: '#ED4956',
-
   border: '#dcdcdc',
   error: '#ED4956',
 
