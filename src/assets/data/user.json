@@ -1,0 +1,152 @@
+{
+  "id": "u1",
+  "image": "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+  "name": "Laura Palmer",
+  "bio": "🧑🏻‍💻 A software engineer trying to have an impact in the world! • 🚀 35k+ on YouTube #notJustDev 📈 • Follow me for value-packed dev content 💡",
+  "username": "laurapalmer",
+  "posts": [
+    {
+      "id": "1",
+      "createdAt": "19 December 2021",
+      "images": [
+        "https://images.unsplash.com/photo-1494253109108-2e30c049369b?auto=format&fit=crop&w=700&q=60",
+        "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=700&q=60",
+        "https://images.unsplash.com/photo-1494253109108-2e30c049369b?auto=format&fit=crop&w=700&q=60"
+      ],
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "2",
+      "createdAt": "19 December 2021",
+      "images": [
+        "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=700&q=60",
+        "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/2.jpg",
+        "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/3.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "3",
+      "createdAt": "19 December 2021",
+      "images": [
+        "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=700&q=60",
+        "https://images.unsplash.com/photo-1473186505569-9c61870c11f9?auto=format&fit=crop&w=700&q=60",
+        "https://images.unsplash.com/photo-1481819613569-4f2fb88db6d9?auto=format&fit=crop&w=700&q=60"
+      ],
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "4",
+      "createdAt": "19 December 2021",
+      "images": [
+        "https://images.unsplash.com/photo-1520341280432-4749d4d7bcf9?auto=format&fit=crop&w=700&q=60",
+        "https://images.unsplash.com/photo-1507143550189-fed454f93097?auto=format&fit=crop&w=700&q=60",
+        "https://images.unsplash.com/photo-1494253109108-2e30c049369b?auto=format&fit=crop&w=700&q=60"
+      ],
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+
+    {
+      "id": "5",
+      "createdAt": "19 December 2021",
+      "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/2.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "6",
+      "createdAt": "19 December 2021",
+      "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/3.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?",
+      "user": {
+        "id": "u1",
+        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/3.jpg",
+        "username": "vadimnotjustdev"
+      },
+      "nofComments": 11
+    },
+    {
+      "id": "7",
+      "createdAt": "19 December 2021",
+      "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/4.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "8",
+      "createdAt": "19 December 2021",
+      "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/4.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "9",
+      "createdAt": "19 December 2021",
+      "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/4.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "10",
+      "createdAt": "19 December 2021",
+      "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/4.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "11",
+      "createdAt": "19 December 2021",
+      "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/4.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "9",
+      "createdAt": "19 December 2021",
+      "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/4.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "10",
+      "createdAt": "19 December 2021",
+      "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/4.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "11",
+      "createdAt": "19 December 2021",
+      "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/4.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "12",
+      "createdAt": "19 December 2021",
+      "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/4.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "13",
+      "createdAt": "19 December 2021",
+      "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/4.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "14",
+      "createdAt": "19 December 2021",
+      "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/4.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "15",
+      "createdAt": "19 December 2021",
+      "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/4.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "16",
+      "createdAt": "19 December 2021",
+      "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/4.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    },
+    {
+      "id": "17",
+      "createdAt": "19 December 2021",
+      "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/4.jpg",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus unde blanditiis. Eos fugiat dolorem ea fugit aut sapiente corrupti autem dolores deleniti architecto, omnis, amet unde dignissimos quam minima?"
+    }
+  ]
+}
