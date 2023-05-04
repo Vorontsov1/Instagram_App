@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   View,
   Text,
@@ -11,7 +12,10 @@ import {useForm, Controller, Control, SubmitHandler} from 'react-hook-form';
 import user from '../../assets/data/user.json';
 import colors from '../../theme/colors.ts';
 import fonts from '../../theme/fonts.ts';
-import {IUser} from '../../types/user';
+import { IUser } from '../../types/user';
+import {
+  launchImageLibrary,
+} from 'react-native-image-picker';
 
 type IEditableUserField = 'name' | 'username' | 'website' | 'bio';
 type IEditableUser = Pick<IUser, IEditableUserField>;
@@ -61,6 +65,7 @@ const CustomInput = ({
 );
 
 const EditProfileScreen = () => {
+  const [selectedPhoto, setSelectedPhoto] = useState<null | Asset> (null);
   const {
     control,
     handleSubmit,
@@ -85,11 +90,23 @@ const EditProfileScreen = () => {
   const URL_REGEX =
     /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
   
+  const onChangePhoto = () => {
+    launchImageLibrary(
+      {mediaType: 'photo'},
+      ({didCancel, errorCode, errorMessage, assets}) => {
+        if (!didCancel && !errorCode) {
+         setSelectedPhoto(assets[0]);
+        }
+      },
+    );
+  };
   
   return (
     <SafeAreaView style={styles.page}>
-      <Image source={{uri: user.image}} style={styles.avatar} />
-      <Text style={styles.textButton}>Change profile photo</Text>
+      <Image source={{uri: selectedPhoto?.uri ||  user.image}} style={styles.avatar} />
+      <Text
+        onPress={onChangePhoto}
+        style={styles.textButton}>Change profile photo</Text>
 
       <CustomInput
         name="name"

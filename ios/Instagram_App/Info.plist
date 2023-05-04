@@ -35,6 +35,11 @@
 			</dict>
 		</dict>
 	</dict>
+
+
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need yuor photo library permission</string>
+
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>
