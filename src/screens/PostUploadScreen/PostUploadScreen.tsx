@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useRef} from 'react';
 import {View, Text, SafeAreaView, StyleSheet, Pressable} from 'react-native';
 import colors from '../../theme/colors.ts';
 import {Camera} from 'expo-camera';
@@ -22,7 +22,10 @@ const flashModeToIcon = {
 const PostUploadScreen = () => {
   const [hasPermissions, setHasPermissions] = useState<boolean | null>(null);
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
-  const [flash, setFlash] = useState(FlashMode.off);
+    const [flash, setFlash] = useState(FlashMode.off);
+    const [isCameraReady, setIsCameraReady] = useState(false);
+
+const cameraRef = useRef<Camera>(null);
 
   useEffect(() => {
     const getPermissions = async () => {
@@ -44,7 +47,10 @@ const PostUploadScreen = () => {
       setFlash(flashModes[nextIndex]);
   };
  
-    
+    const takePicture = async () => { 
+        const result = await cameraRef.current?.takePictureAsync();
+        console.log(result);
+     }
 
   const flipCameraType = () => {
     setCameraType(
@@ -62,11 +68,13 @@ const PostUploadScreen = () => {
 
   return (
     <SafeAreaView style={styles.page}>
-      <Camera
+          <Camera
+              ref={cameraRef}
         style={styles.camera}
         type={cameraType}
         ratio="4:3"
         flashMode={flash}
+        onCameraReady={() => setIsCameraReady(true)}
       />
 
       <View style={[styles.buttonContainer, {top: 45}]}>
@@ -84,8 +92,11 @@ const PostUploadScreen = () => {
       </View>
       <View style={[styles.buttonContainer, {bottom: 35}]}>
         <MaterialIcons name="photo-library" size={30} color={colors.white} />
-        <View style={styles.circle} />
-
+        {isCameraReady && (
+          <Pressable onPress={takePicture}>
+            <View style={styles.circle} />
+          </Pressable>
+        )}
         <Pressable onPress={flipCameraType}>
           <MaterialIcons
             name="flip-camera-ios"
@@ -106,7 +117,7 @@ const styles = StyleSheet.create({
   },
   camera: {
     width: '100%',
-    aspectRatio: 3 / 4,
+    aspectRatio: 3 / 4.4,
   },
   buttonContainer: {
     position: 'absolute',
