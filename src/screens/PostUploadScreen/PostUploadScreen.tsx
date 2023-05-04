@@ -2,7 +2,11 @@ import {useEffect, useState, useRef} from 'react';
 import {View, Text, SafeAreaView, StyleSheet, Pressable} from 'react-native';
 import colors from '../../theme/colors.ts';
 import {Camera} from 'expo-camera';
-import {FlashMode} from 'expo-camera/build/Camera.types';
+import {
+  FlashMode,
+  CameraPictureOptions,
+  CameraRecordingOptions,
+} from 'expo-camera/build/Camera.types';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const flashModes = [
@@ -24,6 +28,8 @@ const PostUploadScreen = () => {
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
     const [flash, setFlash] = useState(FlashMode.off);
     const [isCameraReady, setIsCameraReady] = useState(false);
+    const [isRecording, setIsRecording] = useState(false);
+    
 
 const cameraRef = useRef<Camera>(null);
 
@@ -41,24 +47,61 @@ const cameraRef = useRef<Camera>(null);
     getPermissions();
   }, []);
 
-  const flipFlash = () => {
-    const currentIndex = flashModes.indexOf(flash);
-      const nextIndex = currentIndex === flashModes.length - 1 ? 0 : currentIndex + 1; 
+        const flipFlash = () => {
+        const currentIndex = flashModes.indexOf(flash);
+        const nextIndex = currentIndex === flashModes.length - 1 ? 0 : currentIndex + 1; 
       setFlash(flashModes[nextIndex]);
   };
+    
+      const flipCameraType = () => {
+        setCameraType(
+          cameraType === Camera.Constants.Type.back
+            ? Camera.Constants.Type.front
+            : Camera.Constants.Type.back,
+        );
+      };
+    
  
-    const takePicture = async () => { 
-        const result = await cameraRef.current?.takePictureAsync();
-        console.log(result);
-     }
+    const takePicture = async () => {
+        if (!isCameraReady || !cameraRef.current) {
+            return;
+        }
+    
+        const options: CameraPictureOptions = {
+            quality: 0.5,
+            base64: true,
+            exif: false,
+        };
+        
 
-  const flipCameraType = () => {
-    setCameraType(
-      cameraType === Camera.Constants.Type.back
-        ? Camera.Constants.Type.front
-        : Camera.Constants.Type.back,
-    );
-  };
+        const result = await cameraRef.current.takePictureAsync(options);
+    };
+    const startRecording = async () => {
+        if (!isCameraReady || !cameraRef.current || isRecording) {
+            return;
+        }
+        const options: CameraRecordingOptions = {
+          quality: Camera.Constants.VideoQuality['640:480'],
+          maxDuration: 60,
+          maxFileSize: 10 * 1024 * 1024,
+          mute: false,
+        };
+        setRecording(true);
+        try {
+            const result = cameraRef.current.recordAsync(options);
+            console.log(result);
+        } catch (e) {
+            console.log(e);
+        }
+        setRecording(false);
+    };
+
+    const stopRecording = () => {
+        if (isRecording) {
+            cameraRef.current?.stopRecording();
+            setIsRecording(false);
+        }
+    };
   if (hasPermissions === null) {
     return <Text style={{marginTop: 50}}>Loading...</Text>;
   }
@@ -68,8 +111,8 @@ const cameraRef = useRef<Camera>(null);
 
   return (
     <SafeAreaView style={styles.page}>
-          <Camera
-              ref={cameraRef}
+      <Camera
+        ref={cameraRef}
         style={styles.camera}
         type={cameraType}
         ratio="4:3"
@@ -93,10 +136,19 @@ const cameraRef = useRef<Camera>(null);
       <View style={[styles.buttonContainer, {bottom: 35}]}>
         <MaterialIcons name="photo-library" size={30} color={colors.white} />
         {isCameraReady && (
-          <Pressable onPress={takePicture}>
-            <View style={styles.circle} />
+          <Pressable
+            onPress={takePicture}
+            onLongPress={startRecording}
+            onPressOut={stopRecording}>
+            <View
+              style={[
+                styles.circle,
+                {backgroundColor: isRecording ? colors.accent : colors.white},
+              ]}
+            />
           </Pressable>
         )}
+
         <Pressable onPress={flipCameraType}>
           <MaterialIcons
             name="flip-camera-ios"
