@@ -1,11 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {Image} from 'react-native';
 import HomeScreen from '../../src/screens/HomeScreen/HomeScreen';
 import ProfileScreen from '../../src/screens/ProfileScreen/ProfeliScreen';
-import logo from '../assets/images/logo.png';
-
-
+import BottomTabNav from './BottomTabNav';
 
 
 
@@ -16,13 +13,9 @@ const Navigation = () => {
     return (
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Feed"
+          initialRouteName="Home"
           screenOptions={{headerShown: true}}>
-          <Stack.Screen
-            name="Feed"
-            component={HomeScreen}
-            options={{headerTitle: HeaderTitle}}
-          />
+          <Stack.Screen name="Home" component={BottomTabNav} options={{headerShown: false}} />
 
           <Stack.Screen
             name="UserProfile"
@@ -34,15 +27,7 @@ const Navigation = () => {
     );
 };
 
-const HeaderTitle = () => {
-    return (
-      <Image
-        source={logo}
-        resizeMode="contain"
-        style={{width: 150, height: 40}}
-      />
-    );
-};
+
 
 
 export default Navigation;  
