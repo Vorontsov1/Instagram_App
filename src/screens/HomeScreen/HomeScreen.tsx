@@ -11,7 +11,7 @@ import {useRef, useState} from 'react';
 
 
 
-const HomeScreen = () => {
+    const HomeScreen = () => {
 
     const [activPostId, setActivePostId] = useState<string | null>(null);
 
@@ -33,7 +33,8 @@ const HomeScreen = () => {
      <FlatList
        data={posts}
        renderItem={({item}) => (
-         <FeedPost post={item} isVisible={activPostId === item.id} />
+         <FeedPost
+           post={item} isVisible={activPostId === item.id} />
        )}
        keyExtractor={item => item.id}
        showVerticalScrollIndicator={false}

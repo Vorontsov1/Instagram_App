@@ -25,9 +25,9 @@ const Navigation = () => {
           />
 
           <Stack.Screen
-                    name="Profile"
-                    component={ProfileScreen}
-                    options={{ title: 'Profile' }}
+            name="UserProfile"
+            component={ProfileScreen}
+            options={{title: 'UserProfile'}}
           />
         </Stack.Navigator>
       </NavigationContainer>

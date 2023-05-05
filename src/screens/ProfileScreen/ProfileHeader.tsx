@@ -2,8 +2,14 @@ import {View, Text, SafeAreaView, Image,} from 'react-native';
 import user from '../../assets/data/user.json';
 import Button from '../../components/Button';
 import styles from './styles';
+import {useNavigation} from '@react-navigation/native';
+
+
 
 const ProfileHeader = () => {
+  const navigation = useNavigation();
+
+  
   return (
     <SafeAreaView style={styles.root}>
       <View style={styles.headerRow}>
@@ -40,8 +46,8 @@ const ProfileHeader = () => {
           onPress={() => console.warn('Edit Profile')}
         />
         <Button
-          text="Another button"
-          onPress={() => console.warn('Edit Profile')}
+          text="Go back"
+          onPress={() => navigation.popToTop()}
         />
       </View>
 
