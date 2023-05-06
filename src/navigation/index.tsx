@@ -18,7 +18,17 @@ const linjing: LinkingOptions<RootNavigatorParamList> = {
   config: {
     initialRouteName: 'Home',
     screens: {
-      Comments: 'comments',
+      Comments: 'comments', // mychat://comments
+      //mychat://user/123
+      Home: {
+        screens: {
+          HomeStack: {
+            screens: {
+              UserProfile: 'user/:userId',
+            },
+          },
+        },
+      },
     },
   },
 };

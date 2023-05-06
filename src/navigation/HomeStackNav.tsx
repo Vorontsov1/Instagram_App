@@ -14,7 +14,10 @@ const Stack = createNativeStackNavigator<HomeStackNavigatorParamList>();
 const HomeStackNav = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Feed" component={HomeScreen} options={{ headerTitle: HeaderTitle }} />
+        <Stack.Screen
+          name="Feed"
+          component={HomeScreen}
+          options={{ headerTitle: HeaderTitle }} />
             <Stack.Screen
                 name="UserProfile"
                 component={ProfileScreen}

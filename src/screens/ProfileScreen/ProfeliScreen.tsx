@@ -19,7 +19,8 @@ const ProfileScreen = () => {
 
   const  userId = route.params?.userId;
 //query for user with id = userId
- 
+ console.warn('userId', userId);
+
 
     return (
       <SafeAreaView>
