@@ -4,17 +4,27 @@ import HomeScreen from '../../src/screens/HomeScreen/HomeScreen';
 import ProfileScreen from '../../src/screens/ProfileScreen/ProfeliScreen';
 import CommentsScreen from '../screens/CommentScreen/CommentsScreen';
 import BottomTabNav from './BottomTabNav';
+import { LinkingOptions } from '@react-navigation/native';
 import {RootNavigator} from './types';
+import {RootNavigatorParamList} from './types.ts';
+
 
 
 
 
 const Stack = createNativeStackNavigator<RootNavigator>(); //{Navigator, Screen}
-
+const linjing: LinkingOptions<RootNavigatorParamList> = {
+  prefixes: ['mychat://'],
+  config: {
+    screens: {
+      Comments: 'comments',
+    },
+  },
+};
 
 const Navigation = () => {
     return (
-      <NavigationContainer>
+      <NavigationContainer linking={linjing}>
         <Stack.Navigator 
           initialRouteName="Home"
           screenOptions={{headerShown: true}}>
