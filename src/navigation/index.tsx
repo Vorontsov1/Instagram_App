@@ -16,6 +16,7 @@ const Stack = createNativeStackNavigator<RootNavigator>(); //{Navigator, Screen}
 const linjing: LinkingOptions<RootNavigatorParamList> = {
   prefixes: ['mychat://'],
   config: {
+    initialRouteName: 'Home',
     screens: {
       Comments: 'comments',
     },
