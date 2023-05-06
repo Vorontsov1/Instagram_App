@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../../src/screens/HomeScreen/HomeScreen';
 import ProfileScreen from '../../src/screens/ProfileScreen/ProfeliScreen';
+import CommentsScreen from '../screens/CommentScreen/CommentsScreen';
 import BottomTabNav from './BottomTabNav';
 
 
@@ -15,13 +16,8 @@ const Navigation = () => {
         <Stack.Navigator
           initialRouteName="Home"
           screenOptions={{headerShown: true}}>
-          <Stack.Screen name="Home" component={BottomTabNav} options={{headerShown: false}} />
-
-          <Stack.Screen
-            name="UserProfile"
-            component={ProfileScreen}
-            options={{title: 'UserProfile'}}
-          />
+          <Stack.Screen name="Home" component={BottomTabNav} options={{ headerShown: false }} />
+          <Stack.Screen name="Comments" component={CommentsScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     );

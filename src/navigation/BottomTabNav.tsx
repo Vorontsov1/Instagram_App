@@ -6,6 +6,7 @@ import PostUploadScreen from '../screens/PostUploadScreen/PostUploadScreen';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import ProfileStackNav from './ProfileStackNav';
 import HomeStackNav from './HomeStackNav';
 import colors from '../theme/colors.ts';
 
@@ -75,8 +76,9 @@ const BottomTabNav = () => {
 
       <Tab.Screen
         name="MyProfile"
-        component={ProfileScreen}
+        component={ProfileStackNav}
         options={{
+          headerShown: false,
           tabBarIcon: ({color, size}) => (
             <FontAwesome name="user-circle-o" size={size} color={color} />
           ),
