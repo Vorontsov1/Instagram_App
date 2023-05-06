@@ -23,6 +23,7 @@ const linjing: LinkingOptions<RootNavigatorParamList> = {
       Home: {
         screens: {
           HomeStack: {
+            initialRouteName: 'Feed',
             screens: {
               UserProfile: 'user/:userId',
             },
