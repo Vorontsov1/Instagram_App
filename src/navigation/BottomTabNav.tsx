@@ -8,13 +8,14 @@ import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunity
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import ProfileStackNav from './ProfileStackNav';
 import HomeStackNav from './HomeStackNav';
+import { BottomTabNavigatorParamList } from '../types/types';
 import colors from '../theme/colors.ts';
 
 
 
 
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
 
 const BottomTabNav = () => {
   return (
