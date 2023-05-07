@@ -1,14 +1,14 @@
-// import HomeScreen from './src/screens/HomeScreen/HomeScreen';
-// import CommentsScreen from './src/screens/CommentScreen';
-// import ProfileScreen from './src/screens/ProfileScreen';
-// import EditProfileScreen from './src/screens/EditProfileScreen';
-// import PostUploadScreen from './src/screens/PostUploadScreen';
 import Navigation from './src/navigation';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 
 
 const App = () => {
-  return  <Navigation />
+  return (
+    <SafeAreaProvider>
+      <Navigation />
+    </SafeAreaProvider>
+  );
 };
 
 export default App;
