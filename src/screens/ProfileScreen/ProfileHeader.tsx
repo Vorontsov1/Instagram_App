@@ -1,21 +1,14 @@
-import {View, Text, SafeAreaView, Image,} from 'react-native';
+import {View, Text, SafeAreaView, Image} from 'react-native';
 import user from '../../assets/data/user.json';
 import Button from '../../components/Button';
 import styles from './styles';
-import { useNavigation } from '@react-navigation/native';
-import { ProfileNavigationProp } from '../../navigation/types';
+import {useNavigation} from '@react-navigation/native';
+import {ProfileNavigationProp} from '../../types/navigation';
 import {Auth} from 'aws-amplify';
-
-
-
-
-
-
 
 const ProfileHeader = () => {
   const navigation = useNavigation<ProfileNavigationProp>();
 
-  
   return (
     <SafeAreaView style={styles.root}>
       <View style={styles.headerRow}>
@@ -51,10 +44,7 @@ const ProfileHeader = () => {
           text="Edit Profile"
           onPress={() => navigation.navigate('Edit Profile')}
         />
-        <Button
-          text="Sign out"
-          onPress={() => Auth.signOut()}
-        />
+        <Button text="Sign out" onPress={() => Auth.signOut()} />
       </View>
 
       {/* Grid of posts */}

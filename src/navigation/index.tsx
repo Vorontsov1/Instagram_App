@@ -1,16 +1,13 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../../src/screens/HomeScreen/HomeScreen';
 import ProfileScreen from '../../src/screens/ProfileScreen/ProfeliScreen';
 import CommentsScreen from '../screens/CommentScreen/CommentsScreen';
 import BottomTabNav from './BottomTabNav';
-import { LinkingOptions } from '@react-navigation/native';
-import {RootNavigator} from './types';
-import {RootNavigatorParamList} from './types.ts';
-
-
-
-
+import {LinkingOptions} from '@react-navigation/native';
+import {RootNavigator} from '../types/navigation';
+import {RootNavigatorParamList} from '../types/navigation';
+import AuthStackNavigator from './AuthStackNavigator';
 
 const Stack = createNativeStackNavigator<RootNavigator>(); //{Navigator, Screen}
 const linjing: LinkingOptions<RootNavigatorParamList> = {
@@ -35,19 +32,25 @@ const linjing: LinkingOptions<RootNavigatorParamList> = {
 };
 
 const Navigation = () => {
-    return (
-      <NavigationContainer linking={linjing}>
-        <Stack.Navigator 
-          initialRouteName="Home"
-          screenOptions={{headerShown: true}}>
-          <Stack.Screen name="Home" component={BottomTabNav} options={{ headerShown: false }} />
-          <Stack.Screen name="Comments" component={CommentsScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    );
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Auth"
+        screenOptions={{headerShown: true}}>
+        <Stack.Screen
+          name="Auth"
+          component={AuthStackNavigator}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Home"
+          component={BottomTabNav}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen name="Comments" component={CommentsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 };
 
-
-
-
-export default Navigation;  
+export default Navigation;

@@ -11,35 +11,31 @@ import Comment from '../Comment';
 import DoublePressable from '../DoublePressable';
 import Carousel from '../Carousel';
 import VideoPlayer from '../Videoplayer';
-import {FeedNavigationProp} from '../../navigation/types.ts'
+import {FeedNavigationProp} from '../../types/navigation.js';
 import {useNavigation} from '@react-navigation/native';
 
 interface IFeedPost {
   post: IPost;
- isVisible: boolean;
+  isVisible: boolean;
 }
 
-const FeedPost = ({post,  isVisible}: IFeedPost) => {
+const FeedPost = ({post, isVisible}: IFeedPost) => {
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const [isliked, setIsliked] = useState(false);
 
-
   const navigation = useNavigation<FeedNavigationProp>();
 
-
-   const navigateToUser = () => {
-     navigation.navigate('UserProfile', {userId: post.user.id});
-   };
-  
-  const onNavigateToComments = () => {
-    navigation.navigate('Comments', { postId: post.id });
+  const navigateToUser = () => {
+    navigation.navigate('UserProfile', {userId: post.user.id});
   };
-  
-  
+
+  const onNavigateToComments = () => {
+    navigation.navigate('Comments', {postId: post.id});
+  };
+
   const toggleDescriptionExpanded = () => {
     setIsDescriptionExpanded(v => !v); //make it to true
   };
-
 
   const toggleLike = () => {
     setIsliked(v => !v);
@@ -67,9 +63,9 @@ const FeedPost = ({post,  isVisible}: IFeedPost) => {
       {/* Header */}
       <View style={styles.header}>
         <Image style={styles.avatar} source={{uri: post.user.image}} />
-        <Text
-          onPress={navigateToUser}
-          style={styles.name}>{post.user.username}</Text>
+        <Text onPress={navigateToUser} style={styles.name}>
+          {post.user.username}
+        </Text>
         <Entypo
           name="dots-three-horizontal"
           size={16}
@@ -123,9 +119,7 @@ const FeedPost = ({post,  isVisible}: IFeedPost) => {
         <Text onPress={toggleDescriptionExpanded} style={styles.text}>
           {isDescriptionExpanded ? 'less' : 'more'}
         </Text>
-        <Text
-          onPress={onNavigateToComments}
-          style={{ color: colors.grey }}>
+        <Text onPress={onNavigateToComments} style={{color: colors.grey}}>
           View all {post.nofComments} comments
         </Text>
         {post.comments.map(comment => (
