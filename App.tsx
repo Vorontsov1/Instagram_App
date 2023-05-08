@@ -1,7 +1,10 @@
 import Navigation from './src/navigation';
 import {Amplify} from 'aws-amplify';
 import config from './src/aws-exports';
-import {withAuthenticator} from 'aws-amplify-react-native';
+import { withAuthenticator, AmplifyTheme } from 'aws-amplify-react-native';
+import colors from './src/theme/colors.ts';
+
+
 
 
 
@@ -55,5 +58,25 @@ const signUpConfig = {
   ],
 };
 
+const customTheme = {
+  ...AmplifyTheme,
+  button: {
+    ...AmplifyTheme.button,
+    backgroundColor: colors.primary,
+    borderRadius: 100,
+  },
+  buttonDisabled: {
+    ...AmplifyTheme.button,
+    backgroundColor: colors.primary,
+    borderRadius: 100,
+  },
+  sectionFooterLink: {
+    ...AmplifyTheme.sectionFooterLink,
+    fontSize: 17,
+    color: '#5c78ff',
+  },
+};
 
-export default withAuthenticator(App, { signUpConfig });
+
+
+export default withAuthenticator(App, {signUpConfig,  theme: customTheme});
