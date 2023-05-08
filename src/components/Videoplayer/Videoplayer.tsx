@@ -8,32 +8,27 @@ import colors from '../../theme/colors.ts';
 
 interface IVideoPlayer {
     uri: string;
-    paused: boolean;
+    paused?: boolean;
 }
 
 const VideoPlayer = ({uri, paused}: IVideoPlayer) => {
     const [muted, setMuted] = useState(true);
-    // const onProgress = (data: any) => {
-    //      console.log('Seekable duration: ', data.seekableDuration);
-    //  }
-
+  
   return (
     <View>
       <Video
-        resizeMode="cover"
+        paused={paused}
+        muted={muted}
         source={{uri}}
         style={styles.video}
+        resizeMode="cover"
         repeat
-        muted={muted}
-        paused={paused}
-        // onProgress={onProgress}
       />
-      <Pressable style={styles.muteButton}>
+      <Pressable onPress={() => setMuted(v => !v)} style={styles.muteButton}>
         <Ionicons
           name={muted ? 'volume-mute' : 'volume-medium'}
-          size={14}
           color="white"
-          onPress={() => setMuted(v => !v)}
+          size={14}
         />
       </Pressable>
     </View>

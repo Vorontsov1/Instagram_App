@@ -6,9 +6,6 @@ import colors from './src/theme/colors.ts';
 
 
 
-
-
-
 Amplify.configure(config);
 
 const App = () => {

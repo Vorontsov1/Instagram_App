@@ -28,7 +28,9 @@ const PostUploadScreen = () => {
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
     const [flash, setFlash] = useState(FlashMode.off);
     const [isCameraReady, setIsCameraReady] = useState(false);
-    const [isRecording, setIsRecording] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+
     
 
 const cameraRef = useRef<Camera>(null);
@@ -63,38 +65,50 @@ const cameraRef = useRef<Camera>(null);
     
  
     const takePicture = async () => {
-        if (!isCameraReady || !cameraRef.current) {
-            return;
-        }
-    
-        const options: CameraPictureOptions = {
-            quality: 0.5,
-            base64: true,
-            exif: false,
-        };
-        
+      if (!isCameraReady || !cameraRef.current || isProcessing) {
+        return;
+      }
+      setIsProcessing(true);
 
+      const options: CameraPictureOptions = {
+        quality: 0.5,
+        base64: true,
+        exif: false,
+      };
+
+      try {
         const result = await cameraRef.current.takePictureAsync(options);
+        // Process the result here
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsProcessing(false);
+      }
     };
-    const startRecording = async () => {
-        if (!isCameraReady || !cameraRef.current || isRecording) {
-            return;
-        }
-        const options: CameraRecordingOptions = {
-          quality: Camera.Constants.VideoQuality['640:480'],
-          maxDuration: 60,
-          maxFileSize: 10 * 1024 * 1024,
-          mute: false,
-        };
-        setRecording(true);
-        try {
-            const result = cameraRef.current.recordAsync(options);
-            console.log(result);
-        } catch (e) {
-            console.log(e);
-        }
-        setRecording(false);
+  
+  const startRecording = async () => {
+    if (!isCameraReady || !cameraRef.current || isRecording || isProcessing) {
+      return;
+    }
+    setIsProcessing(true);
+      
+    const options: CameraRecordingOptions = {
+      quality: Camera.Constants.VideoQuality['640:480'],
+      maxDuration: 60,
+      maxFileSize: 10 * 1024 * 1024,
+      mute: false,
     };
+    setRecording(true);
+    try {
+      const result = await cameraRef.current.recordAsync(options);
+      console.log(result);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setProcessing(false);
+      setRecording(false);
+    }
+  };
 
     const stopRecording = () => {
         if (isRecording) {
