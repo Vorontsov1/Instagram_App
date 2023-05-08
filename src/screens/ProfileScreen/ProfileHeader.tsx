@@ -50,7 +50,7 @@ const ProfileHeader = () => {
         />
         <Button
           text="Go back"
-          onPress={() => navigation.popToTop()}
+          onPress={() => navigation.goBack()}
         />
       </View>
 
