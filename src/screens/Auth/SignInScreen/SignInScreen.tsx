@@ -14,7 +14,8 @@ import SocialSignInButtons from '../components/SocialSignInButtons';
 import {useNavigation} from '@react-navigation/native';
 import {useForm} from 'react-hook-form';
 import { SignInNavigationProp } from '../../../types/navigation';
-import {Auth} from 'aws-amplify';
+import { Auth } from 'aws-amplify';
+import { useAuthContext } from '../../../contexts/AuthContext';
 
 type SignInData = {
   username: string;
@@ -25,6 +26,7 @@ const SignInScreen = () => {
   const {height} = useWindowDimensions();
   const navigation = useNavigation<SignInNavigationProp>();
   const [loading, setLoading] = useState(false);
+  const {setUser} = useAuthContext();
 
   const {control, handleSubmit, reset} = useForm<SignInData>();
 
@@ -34,7 +36,8 @@ const SignInScreen = () => {
      }
      setLoading(true);
      try {
-       await Auth.signIn(email, password);
+       const cognitoUser = await Auth.signIn(email, password);
+       setUser(cognitoUser);
      } catch (e) {
        if ((e as Error).name === 'UserNotConfirmedException') {
          navigation.navigate('Confirm email', {email});
