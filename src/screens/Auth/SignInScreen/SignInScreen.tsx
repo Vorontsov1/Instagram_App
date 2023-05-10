@@ -26,25 +26,29 @@ const SignInScreen = () => {
   const navigation = useNavigation<SignInNavigationProp>();
   const [loading, setLoading] = useState(false);
 
-  const {control, handleSubmit} = useForm<SignInData>();
+  const {control, handleSubmit, reset} = useForm<SignInData>();
 
-  const onSignInPressed = async ({ username, password }: SignInData) => {
-    if (loading) {
-      return;
-    }
-    setLoading(true);
-    try {
-      const response = await Auth.signIn(username, password);
-      // TODO save user data in context
-    } catch (error) {
-      Alert.alert("Oopps", (error as Error).message)
-    } finally { 
-      setLoading(false);
-    }
+   const onSignInPressed = async ({email, password}: SignInData) => {
+     if (loading) {
+       return;
+     }
+     setLoading(true);
+     try {
+       await Auth.signIn(email, password);
+     } catch (e) {
+       if ((e as Error).name === 'UserNotConfirmedException') {
+         navigation.navigate('Confirm email', {email});
+       } else {
+         Alert.alert('Oopps', (e as Error).message);
+       }
+     } finally {
+       setLoading(false);
+       reset();
+     }
+   };
 
     // validate user
     // navigation.navigate('Home');
-  };
 
   const onForgotPasswordPressed = () => {
     navigation.navigate('Forgot password');
