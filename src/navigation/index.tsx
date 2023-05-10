@@ -8,7 +8,10 @@ import {LinkingOptions} from '@react-navigation/native';
 import {RootNavigator} from '../types/navigation';
 import {RootNavigatorParamList} from '../types/navigation';
 import AuthStackNavigator from './AuthStackNavigator';
-import {useAuthContext} from '../contexts/AuthContext';
+import { useAuthContext } from '../contexts/AuthContext';
+import { View, ActivityIndicator } from 'react-native';
+
+
 
 
 
@@ -36,12 +39,20 @@ const linking: LinkingOptions<RootNavigatorParamList> = {
 
 const Navigation = () => {
   const {user} = useAuthContext();
-  
+
+  if (user === undefined) {
+    return (
+         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <ActivityIndicator />
+    </View>
+    );
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{headerShown: true}}>
-        { !user ? (<Stack.Screen
+        {!user ? (<Stack.Screen
           name="Auth"
           component={ AuthStackNavigator }
           options={ { headerShown: false } }
