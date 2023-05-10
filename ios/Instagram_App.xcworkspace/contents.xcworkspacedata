@@ -8,6 +8,6 @@
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Instagram_App.xcodeproj">
+      location = "group:VorontsovDeveloper.xcodeproj">
    </FileRef>
 </Workspace>
