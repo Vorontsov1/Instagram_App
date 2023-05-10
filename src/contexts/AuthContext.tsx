@@ -17,7 +17,7 @@ type AuthContextType = {
   setUser: Dispatch<SetStateAction<UserType>>;
 };
  
-export const AuthContext = createContext<AuthContextType>({
+const AuthContext = createContext<AuthContextType>({
   user: undefined,
   setUser: () => {},
 });

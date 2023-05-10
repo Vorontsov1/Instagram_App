@@ -18,7 +18,7 @@ import { Auth } from 'aws-amplify';
 import { useAuthContext } from '../../../contexts/AuthContext';
 
 type SignInData = {
-  username: string;
+  email: string;
   password: string;
 };
 
@@ -26,32 +26,27 @@ const SignInScreen = () => {
   const {height} = useWindowDimensions();
   const navigation = useNavigation<SignInNavigationProp>();
   const [loading, setLoading] = useState(false);
-  const {setUser} = useAuthContext();
 
   const {control, handleSubmit, reset} = useForm<SignInData>();
 
-   const onSignInPressed = async ({email, password}: SignInData) => {
-     if (loading) {
-       return;
-     }
-     setLoading(true);
-     try {
-       const cognitoUser = await Auth.signIn(email, password);
-       setUser(cognitoUser);
-     } catch (e) {
-       if ((e as Error).name === 'UserNotConfirmedException') {
-         navigation.navigate('Confirm email', {email});
-       } else {
-         Alert.alert('Oopps', (e as Error).message);
-       }
-     } finally {
-       setLoading(false);
-       reset();
-     }
-   };
-
-    // validate user
-    // navigation.navigate('Home');
+  const onSignInPressed = async ({email, password}: SignInData) => {
+    if (loading) {
+      return;
+    }
+    setLoading(true);
+    try {
+      await Auth.signIn(email, password);
+    } catch (e) {
+      if ((e as Error).name === 'UserNotConfirmedException') {
+        navigation.navigate('Confirm email', {email});
+      } else {
+        Alert.alert('Oopps', (e as Error).message);
+      }
+    } finally {
+      setLoading(false);
+      reset();
+    }
+  };
 
   const onForgotPasswordPressed = () => {
     navigation.navigate('Forgot password');
@@ -71,10 +66,10 @@ const SignInScreen = () => {
         />
 
         <FormInput
-          name="username"
-          placeholder="Username"
+          name="email"
+          placeholder="Email"
           control={control}
-          rules={{required: 'Username is required'}}
+          rules={{required: 'Email is required'}}
         />
 
         <FormInput
@@ -91,7 +86,10 @@ const SignInScreen = () => {
           }}
         />
 
-        <CustomButton text={loading ? "Loading..." : "Sign In"} onPress={handleSubmit(onSignInPressed)} />
+        <CustomButton
+          text={loading ? 'Loading...' : 'Sign In'}
+          onPress={handleSubmit(onSignInPressed)}
+        />
 
         <CustomButton
           text="Forgot password?"

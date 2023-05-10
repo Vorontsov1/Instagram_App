@@ -9,31 +9,28 @@ import { NewPasswordNavigationProp } from '../../../types/navigation';
 import {Auth} from 'aws-amplify';
 
 type NewPasswordType = {
-  username: string;
+  email: string;
   code: string;
   password: string;
 };
 
 const NewPasswordScreen = () => {
   const {control, handleSubmit} = useForm<NewPasswordType>();
-  const [loading,  setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const navigation = useNavigation<NewPasswordNavigationProp>();
 
-
-  const onSubmitPressed = async ({
-    username,
-    code,
-    password,
-  }: NewPasswordType) => {
+  const onSubmitPressed = async ({email, code, password}: NewPasswordType) => {
     if (loading) {
       return;
     }
     setLoading(true);
+
     try {
-      await Auth.forgotPasswordSubmit(username, code, password);
+      await Auth.forgotPasswordSubmit(email, code, password);
       navigation.navigate('Sign in');
-    } catch (error) {
-      Alert.alert('Error', 'Something went wrong');
+    } catch (e) {
+      Alert.alert('Oops', (e as Error).message);
     } finally {
       setLoading(false);
     }
@@ -49,10 +46,10 @@ const NewPasswordScreen = () => {
         <Text style={styles.title}>Reset your password</Text>
 
         <FormInput
-          placeholder="Username"
-          name="username"
+          placeholder="Email"
+          name="email"
           control={control}
-          rules={{required: 'Username is required'}}
+          rules={{required: 'Email is required'}}
         />
 
         <FormInput
@@ -76,7 +73,10 @@ const NewPasswordScreen = () => {
           }}
         />
 
-        <CustomButton text="Submit" onPress={handleSubmit(onSubmitPressed)} />
+        <CustomButton
+          text={loading ? 'Loading' : 'Submit'}
+          onPress={handleSubmit(onSubmitPressed)}
+        />
 
         <CustomButton
           text="Back to Sign in"

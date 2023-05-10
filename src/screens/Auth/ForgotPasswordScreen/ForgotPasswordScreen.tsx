@@ -9,7 +9,7 @@ import { ForgotPasswordNavigationProp } from '../../../types/navigation';
 import {Auth} from 'aws-amplify';
 
 type ForgotPasswordData = {
-  username: string;
+  email: string;
 };
 
 const ForgotPasswordScreen = () => {
@@ -17,28 +17,26 @@ const ForgotPasswordScreen = () => {
   const navigation = useNavigation<ForgotPasswordNavigationProp>();
   const [loading, setLoading] = useState(false);
 
-   const onSendPressed = async ({username}: ForgotPasswordData) => {
-     if (loading) {
-       return;
-     }
-     setLoading(true);
+  const onSendPressed = async ({email}: ForgotPasswordData) => {
+    if (loading) {
+      return;
+    }
+    setLoading(true);
 
-     try {
-       const response = await Auth.forgotPassword(username);
-       Alert.alert(
-         'Check your email',
-         `The code has been sent to ${response.CodeDeliveryDetails.Destination}`,
-       );
-       navigation.navigate('New password');
-     } catch (e) {
-       Alert.alert('Oops', (e as Error).message);
-     } finally {
-       setLoading(false);
-     }
-   };
+    try {
+      const response = await Auth.forgotPassword(email);
+      Alert.alert(
+        'Check your email',
+        `The code has been sent to ${response.CodeDeliveryDetails.Destination}`,
+      );
+      navigation.navigate('New password');
+    } catch (e) {
+      Alert.alert('Oops', (e as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  // console.warn(data);
-  // navigation.navigate('New password');
   const onSignInPress = () => {
     navigation.navigate('Sign in');
   };
@@ -49,15 +47,18 @@ const ForgotPasswordScreen = () => {
         <Text style={styles.title}>Reset your password</Text>
 
         <FormInput
-          name="username"
+          name="email"
           control={control}
-          placeholder="Username"
+          placeholder="Email"
           rules={{
-            required: 'Username is required',
+            required: 'Email is required',
           }}
         />
 
-        <CustomButton text="Send" onPress={handleSubmit(onSendPressed)} />
+        <CustomButton
+          text={loading ? 'Loading...' : 'Send'}
+          onPress={handleSubmit(onSendPressed)}
+        />
 
         <CustomButton
           text="Back to Sign in"
