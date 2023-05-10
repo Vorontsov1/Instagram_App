@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.instagram_app"
+    namespace "dev.vorontsov.photos"
     defaultConfig {
-        applicationId "com.instagram_app"
+        applicationId "dev.vorontsov.photos"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

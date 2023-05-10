@@ -1,4 +1,4 @@
-package com.instagram_app;
+package dev.vorontsov.photos;
 import expo.modules.ReactActivityDelegateWrapper;
 
 import com.facebook.react.ReactActivity;
@@ -14,7 +14,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "Instagram_App";
+    return "Vorontsov";
   }
 
   /**
