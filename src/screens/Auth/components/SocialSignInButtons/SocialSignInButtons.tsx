@@ -1,13 +1,30 @@
 import React from 'react';
+import {Alert} from 'react-native';
 import CustomButton from '../CustomButton';
+import {Auth} from 'aws-amplify';
+import {CognitoHostedUIIdentityProvider} from '@aws-amplify/auth';
 
 const SocialSignInButtons = () => {
   const onSignInFacebook = () => {
     console.warn('onSignInFacebook');
+    // try {
+    //   await Auth.federatedSignIn({
+    //     provider: CognitoHostedUIIdentityProvider.Facebook,
+    //   });
+    // } catch (e) {
+    //   Alert.alert('Ops', (e as Error).message);
+    // }
   };
 
   const onSignInGoogle = () => {
     console.warn('onSignInGoogle');
+    // try {
+    //   await Auth.federatedSignIn({
+    //     provider: CognitoHostedUIIdentityProvider.Google,
+    //   });
+    // } catch (e) {
+    //   Alert.alert('Ops', (e as Error).message);
+    // }
   };
 
   const onSignInApple = () => {

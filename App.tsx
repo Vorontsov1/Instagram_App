@@ -5,6 +5,8 @@ import AuthContextProvider from './src/contexts/AuthContext';
 
 
 
+
+
 Amplify.configure(config);
 
 const App = () => {
