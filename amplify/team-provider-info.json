@@ -9,12 +9,19 @@
       "UnauthRoleName": "amplify-instaclone-staging-103756-unauthRole",
       "StackName": "amplify-instaclone-staging-103756",
       "StackId": "arn:aws:cloudformation:eu-west-2:423721791847:stack/amplify-instaclone-staging-103756/8e3fb3d0-f30c-11ed-9613-0ac25f545a86",
-      "AmplifyAppId": "d2fr1560nkth65"
+      "AmplifyAppId": "d2fr1560nkth65",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-instaclone-staging-103756-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
         "Instagram": {},
         "instaclone556dad5c": {}
+      },
+      "function": {
+        "instaclone556dad5cPostConfirmation": {
+          "deploymentBucketName": "amplify-instaclone-staging-103756-deployment",
+          "s3Key": "amplify-builds/instaclone556dad5cPostConfirmation-593856356179796c7033-build.zip"
+        }
       }
     }
   }
