@@ -5,26 +5,26 @@ import {Auth} from 'aws-amplify';
 import {CognitoHostedUIIdentityProvider} from '@aws-amplify/auth';
 
 const SocialSignInButtons = () => {
-  const onSignInFacebook = () => {
-    console.warn('onSignInFacebook');
-    // try {
-    //   await Auth.federatedSignIn({
-    //     provider: CognitoHostedUIIdentityProvider.Facebook,
-    //   });
-    // } catch (e) {
-    //   Alert.alert('Ops', (e as Error).message);
-    // }
+  const onSignInFacebook = async () => {
+    // console.warn('onSignInFacebook');
+    try {
+      await Auth.federatedSignIn({
+        provider: CognitoHostedUIIdentityProvider.Facebook,
+      });
+    } catch (e) {
+      Alert.alert('Ops', (e as Error).message);
+    }
   };
 
-  const onSignInGoogle = () => {
-    console.warn('onSignInGoogle');
-    // try {
-    //   await Auth.federatedSignIn({
-    //     provider: CognitoHostedUIIdentityProvider.Google,
-    //   });
-    // } catch (e) {
-    //   Alert.alert('Ops', (e as Error).message);
-    // }
+  const onSignInGoogle = async () => {
+    // console.warn('onSignInGoogle');
+    try {
+      await Auth.federatedSignIn({
+        provider: CognitoHostedUIIdentityProvider.Google,
+      });
+    } catch (e) {
+      Alert.alert('Ops', (e as Error).message);
+    }
   };
 
   const onSignInApple = () => {
