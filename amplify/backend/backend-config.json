@@ -1,6 +1,6 @@
 {
   "auth": {
-    "Instagram": {
+    "instaclone556dad5c": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -9,17 +9,16 @@
           "SMS"
         ],
         "passwordProtectionSettings": {
-          "passwordPolicyCharacters": [
-            "REQUIRES_LOWERCASE"
-          ],
+          "passwordPolicyCharacters": [],
           "passwordPolicyMinLength": 8
         },
         "signupAttributes": [
-          "EMAIL",
-          "NAME"
+          "EMAIL"
         ],
         "socialProviders": [],
-        "usernameAttributes": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
         "verificationMechanisms": [
           "EMAIL"
         ]

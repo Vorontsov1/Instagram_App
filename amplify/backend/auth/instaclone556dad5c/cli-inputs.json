@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "testAuthIdentityPool",
+    "identityPoolName": "instaclone556dad5c_identitypool_556dad5c",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "instagf9a3141a",
-    "userPoolName": "Instagram",
+    "resourceNameTruncated": "instac556dad5c",
+    "userPoolName": "instaclone556dad5c_userpool_556dad5c",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -14,34 +14,34 @@
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
-    "emailVerificationSubject": "Verification code: {####}",
-    "emailVerificationMessage": "Verification code: {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
     "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
-    "passwordPolicyCharacters": [
-      "Requires Lowercase"
-    ],
+    "passwordPolicyCharacters": [],
     "requiredAttributes": [
-      "email",
-      "name"
+      "email"
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
-    "userpoolClientWriteAttributes": [],
-    "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "Instagf9a3141a_userpoolclient_lambda_role",
+    "userpoolClientWriteAttributes": [
+      "email"
+    ],
+    "userpoolClientReadAttributes": [
+      "email"
+    ],
+    "userpoolClientLambdaRole": "instac556dad5c_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "f9a3141a",
-    "resourceName": "Instagram",
+    "sharedId": "556dad5c",
+    "resourceName": "instaclone556dad5c",
     "authSelections": "identityPoolAndUserPool",
-    "serviceName": "Cognito",
-    "useDefault": "manual",
-    "userPoolGroups": false,
+    "useDefault": "default",
+    "usernameAttributes": [
+      "email"
+    ],
     "userPoolGroupList": [],
-    "adminQueries": false,
-    "thirdPartyAuth": false,
-    "authProviders": [],
+    "serviceName": "Cognito",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true
   }
