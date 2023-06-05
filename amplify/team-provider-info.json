@@ -22,6 +22,9 @@
           "deploymentBucketName": "amplify-instaclone-staging-103756-deployment",
           "s3Key": "amplify-builds/instaclone556dad5cPostConfirmation-593856356179796c7033-build.zip"
         }
+      },
+      "api": {
+        "InstaClone": {}
       }
     }
   }
