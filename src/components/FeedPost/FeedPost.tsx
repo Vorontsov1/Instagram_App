@@ -15,8 +15,13 @@ import {FeedNavigationProp} from '../../types/navigation.js';
 import {useNavigation} from '@react-navigation/native';
 
 interface IFeedPost {
+<<<<<<< Updated upstream
   post: IPost;
   isVisible: boolean;
+=======
+  post: Post;
+  isVisible?: boolean;
+>>>>>>> Stashed changes
 }
 
 const FeedPost = ({post, isVisible}: IFeedPost) => {

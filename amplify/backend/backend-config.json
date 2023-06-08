@@ -27,5 +27,44 @@
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
     }
+<<<<<<< Updated upstream
+=======
+  },
+  "function": {
+    "instaclone556dad5cPostConfirmation": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ],
+          "category": "api",
+          "resourceName": "InstaClone"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_instaclone556dad5cPostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "instaclone556dad5cPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_instaclone556dad5cPostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "instaclone556dad5cPostConfirmation"
+        }
+      ]
+    }
+>>>>>>> Stashed changes
   }
 }

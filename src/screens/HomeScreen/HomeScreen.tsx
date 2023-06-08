@@ -10,6 +10,71 @@ import posts from '../../assets/data/posts';
 import {useRef, useState} from 'react';
 
 
+<<<<<<< Updated upstream
+=======
+export const listPosts = /* GraphQL */ `
+  query ListPosts(
+    $filter: ModelPostFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        description
+        video
+        image
+        images
+        nofComments
+        nofLikes
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        User {
+          id
+          name
+          username
+          image
+        }
+        Comments {
+          items {
+            id
+            comment
+            User {
+              id
+              name
+              username
+            }
+          }
+        }
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+
+const HomeScreen = () => {
+
+  const [activPostId, setActivePostId] = useState<null | string>(null);
+  const [posts, setPosts] = useState([]);
+
+const fetchPosts = async () => {
+  try {
+    const response = await API.graphql(graphqlOperation(listPosts));
+    setPosts(response.data.listPosts.items);
+  } catch (error) {
+    console.error('An error occurred while fetching posts:', error);
+  }
+};
+
+      useEffect(() => { 
+        fetchPosts();  
+      },[]);
+>>>>>>> Stashed changes
 
     const HomeScreen = () => {
 

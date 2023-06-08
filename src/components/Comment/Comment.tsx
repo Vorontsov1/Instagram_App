@@ -23,7 +23,11 @@ const Comment = ({comment, includeDetails = false}: ICommentProps) => {
       )}
       <View style={styles.midddleColumn}>
         <Text style={styles.commentText}>
+<<<<<<< Updated upstream
           <Text style={styles.bold}>{comment.user.username} </Text>
+=======
+          <Text style={styles.bold}>{comment.User?.username} </Text>{' '}
+>>>>>>> Stashed changes
           {comment.comment}
         </Text>
         {includeDetails && (
